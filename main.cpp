@@ -88,24 +88,7 @@ void variableDeclarations()
     unsigned int second = 2;
     unsigned int third = 3;
     
-    ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
-    ignoreUnused(line);
-    ignoreUnused(row);
-    ignoreUnused(distance);
-    ignoreUnused(width);
-    ignoreUnused(height);
-    ignoreUnused(speed);
-    ignoreUnused(pi);
-    ignoreUnused(multipleValue);
-    ignoreUnused(isUnlocked);
-    ignoreUnused(isBroken);
-    ignoreUnused(isUnknown);
-    ignoreUnused(a);
-    ignoreUnused(b);
-    ignoreUnused(c);
-    ignoreUnused(first);
-    ignoreUnused(second);
-    ignoreUnused(third);
+    ignoreUnused(number, line, row, distance, width, height, speed, pi, multipleValue, isUnlocked, isBroken, isUnknown, a, b, c, first, second, third); //passing each variable declared to the ignoreUnused() function
 }
 /*
  10 functions
@@ -166,10 +149,11 @@ char getChar(char a, char b)
 /*
  6)
  */
-double getWeight(double product)
+double getWeight(double productA, double productB)
 {
-    ignoreUnused(product);
-    return{};
+    ignoreUnused(productA, productB);
+
+    return productA + productB;
 }
 
 /*
@@ -178,21 +162,24 @@ double getWeight(double product)
 void setName(std::string name)
 {
     ignoreUnused(name);
+
+    std::string realName = name;
 }
 
 /*
  8)
  */
-std::string getProjceName(std::string name)
+std::string getProjceName(std::string name, int version)
 {
-    ignoreUnused(name);
-    return {};
+    ignoreUnused(name, version);
+
+    return name + "_" + std::to_string(version);
 }
 
 /*
  9)
  */
-unsigned int getNoteNumber(unsigned int note)
+unsigned int getNoteNumber(unsigned int note = 0)
 {
     ignoreUnused(note);
     return {};
@@ -228,13 +215,13 @@ int main()
     auto getCharacters = getChar('b', 'c');
 
     //6)
-    auto weight = getWeight(80.5);
+    auto weight = getWeight(80.5, 90);
 
     //7)
     setName("JUCE");
 
     //8)
-    std::string pName = getProjceName("PFMCPP");
+    std::string pName = getProjceName("PFMCPP", 5);
 
     //9)
     unsigned int note = getNoteNumber(5);
@@ -242,16 +229,8 @@ int main()
     //10)
     float length = getLengthOfWavFile("song");
     
-    ignoreUnused(carRented);
-    ignoreUnused(result);
-    ignoreUnused(distance);
-    ignoreUnused(randomNumber);
-    ignoreUnused(getCharacters);
-    ignoreUnused(weight);
-    ignoreUnused(pName);
-    ignoreUnused(note);
-    ignoreUnused(length);
-
+    ignoreUnused(carRented, result, distance, randomNumber, getCharacters, weight, pName, note, length);
+    
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
